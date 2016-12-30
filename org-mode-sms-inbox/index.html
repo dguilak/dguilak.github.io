@@ -1,0 +1,159 @@
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>org-mode-sms-inbox: a mobile solution for Emacs org-mode harvesting</title>
+	<meta name="description" content="Sick of the fact there's no good mobile Emacs org-mode client for iOS? Text some content to a number, have it show up magically in your org-mode folder.">
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="shortcut icon" href="../assets/images/favicon.ico?v=4b033131eb">
+	<link rel="apple-touch-icon" sizes="57x57" href="../assets/images/icon-57.png?v=4b033131eb">
+	<link rel="apple-touch-icon" sizes="72x72" href="../assets/images/icon-72.png?v=4b033131eb">
+	<link rel="apple-touch-icon" sizes="114x114" href="../assets/images/icon-114.png?v=4b033131eb">
+	<link rel="apple-touch-icon" sizes="144x144" href="../assets/images/icon-144.png?v=4b033131eb">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=4b033131eb">
+	<link rel="stylesheet" type="text/css" href="../assets/css/style-custom.css?v=4b033131eb">
+	<link rel="stylesheet" type="text/css" href="../assets/css/dbg-style-custom.css?v=4b033131eb">
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Merriweather:300,400,900,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<link rel="canonical" href="http://dbg.io/org-mode-sms-inbox/">
+    <meta name="referrer" content="origin">
+    
+    <meta property="og:site_name" content="dbg.io">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="org-mode-sms-inbox: a mobile solution for Emacs org-mode harvesting">
+    <meta property="og:description" content="Sick of the fact there's no good mobile Emacs org-mode client for iOS? Text some content to a number, have it show up magically in your org-mode folder.">
+    <meta property="og:url" content="http://dbg.io/org-mode-sms-inbox/">
+    <meta property="og:image" content="http://dbg.io/content/images/2016/05/IMG_2598.PNG">
+    <meta property="article:published_time" content="2016-05-27T05:37:42.056Z">
+    <meta property="article:modified_time" content="2016-05-31T04:56:37.627Z">
+    <meta property="article:tag" content="emacs">
+    <meta property="article:tag" content="spacemacs">
+    <meta property="article:tag" content="org-mode">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="org-mode-sms-inbox: a mobile solution for Emacs org-mode harvesting">
+    <meta name="twitter:description" content="Sick of the fact there's no good mobile Emacs org-mode client for iOS? Text some content to a number, have it show up magically in your org-mode folder.">
+    <meta name="twitter:url" content="http://dbg.io/org-mode-sms-inbox/">
+    <meta name="twitter:image:src" content="http://dbg.io/content/images/2016/05/IMG_2598.PNG">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "dbg.io",
+    "author": {
+        "@type": "Person",
+        "name": "Dan Guilak",
+        "image": "//www.gravatar.com/avatar/6693144189d6babb5115d3b64e1d920b?s=250&d=mm&r=x",
+        "url": "http://dbg.io/author/dan",
+        "sameAs": null,
+        "description": null
+    },
+    "headline": "org-mode-sms-inbox: a mobile solution for Emacs org-mode harvesting",
+    "url": "http://dbg.io/org-mode-sms-inbox/",
+    "datePublished": "2016-05-27T05:37:42.056Z",
+    "dateModified": "2016-05-31T04:56:37.627Z",
+    "image": "http://dbg.io/content/images/2016/05/IMG_2598.PNG",
+    "keywords": "emacs, spacemacs, org-mode",
+    "description": "Sick of the fact there&#x27;s no good mobile Emacs org-mode client for iOS? Text some content to a number, have it show up magically in your org-mode folder."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7">
+    <link rel="alternate" type="application/rss+xml" title="dbg.io" href="http://dbg.io/rss/">
+</head>
+
+<body class="post-template tag-emacs tag-spacemacs tag-org-mode">
+	<!--[if lt IE 10]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	
+
+
+<div class="container single">
+    <div class="fixed-logo animated fadeInDown">
+        <a href="http://dbg.io">
+            <img class="lgo" src="../assets/images/icon.png?v=4b033131eb">
+            <img class="arrow" src="../assets/images/arrow.png?v=4b033131eb">
+        </a>
+    </div><!-- /.fixed-logo -->
+
+    <div class="rwd-menu">
+        <a class="arrow" href="http://dbg.io">
+            <img src="../assets/images/arrow.png?v=4b033131eb">
+        </a>
+
+        <a class="lgo" href="http://dbg.io">
+            <img src="../assets/images/icon.png?v=4b033131eb">
+        </a>
+    </div><!-- /.rwd-menu -->
+
+    <div class="row animated bounceInUp">
+        <div class="col-lg-12 single-inner">
+            <h1>org-mode-sms-inbox</h1>
+            <h3>Dan Guilak // May 26th, 2016</h3>
+            <hr class="title-hr">
+            <p>TL;DR: org-mode-sms-inbox is a way to add stuff to your org-mode files that leverages Dropbox, Twilio, and IFTTT. Just text your item, have it show up in your inbox later!</p>
+
+<p><em>Want to skip straight to the good stuff without reading my half-baked drivel? Check out the <a href="https://github.com/dguilak/org-mode-sms-inbox">GitHub repository</a></em>.</p>
+
+<p>I've really been enjoying learning to use <a href="http://orgmode.org">org-mode</a> ever since I decided to switch from Vim to <a href="http://spacemacs.org">Spacemacs</a>. I don't need to sing its praises here, many others have already done so. It isn't, however, without its flaws.</p>
+
+<p>Sure, I spend a lot of time in front of a computer, but I'm almost <em>never</em> at a computer when inspiration strikes. I have a giant Evernote "Ideas" notebook that is full of spur-of-the-moment inspiration. It's all useless stuff, but it's fun to be able to have a glimpse into my consciousness after the fact.</p>
+
+<p>It's easy to harvest the dumb ideas I have — I can just open the Evernote app and jot off a quick one. But the mobile landscape for org-mode is ... <em>lackluster</em>. There's <a href="https://play.google.com/store/apps/details?id=com.orgzly">Orgzly</a> for Android which looks pretty great, but the only thing for iOS seems to be <a href="https://github.com/mobileorg/mobileorg">MobileOrg</a> which doesn't seem to be actively developed anymore.</p>
+
+<p>So in typical developer fashion, I plotted out how I was going to alleviate this pain point for myself — I wanted to be able to jot down quick little notes to myself and have them ready in org-mode I can use them as jumping-off points later. I'll just write a quick app in Ionic- no, wait, React Native! I'll make a cool logo for it and it'll get thousands of reviews on the App Store! The feature creep was so thick and palpable you could cut it with a knife.</p>
+
+<p>Halfway into speccing out my Ionically React Native Synergistic Cloud-Based Mobile Org-Mode note-taking platform I realized I was <em>way</em> overdoing it.</p>
+
+<p>So here's <a href="https://github.com/dguilak/org-mode-sms-inbox">org-mode-sms-inbox</a>, which allows you to text a phone number and have it drop an item into your (Dropbox-synced) org folder. That's it.</p>
+
+<p>This blog post has more lines than the actual code does. It requires a bit of setup, but you can deploy it straight to a free-tier Heroku instance from its <a href="https://github.com/dguilak/org-mode-sms-inbox">GitHub page</a>. Give it a shot! Send me a PR! Fork it! Whatever!</p>
+
+            <!--
+            <div class="comments">
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'forum-shortname'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div><!-- /.comments -->
+    </div><!-- /.row -->
+</div><!-- /.container -->
+
+
+
+	<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45019035-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+	<script type="text/javascript" src="../assets/js/jquery.fitvids.js?v=4b033131eb"></script>
+	<script type="text/javascript" src="../assets/js/index.js?v=4b033131eb"></script>
+	<script type="text/javascript" src="../assets/js/typed.js?v=4b033131eb"></script>
+
+</div></body>
