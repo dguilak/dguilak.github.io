@@ -1,0 +1,228 @@
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>Changing the iOS task switcher preview image in React Native</title>
+	<meta name="description" content="A simple solution to change the preview image in the iOS task switcher in React Native to hide any sensitive information.">
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="shortcut icon" href="../assets/images/favicon.ico?v=74ae74e195">
+	<link rel="apple-touch-icon" sizes="57x57" href="../assets/images/icon-57.png?v=74ae74e195">
+	<link rel="apple-touch-icon" sizes="72x72" href="../assets/images/icon-72.png?v=74ae74e195">
+	<link rel="apple-touch-icon" sizes="114x114" href="../assets/images/icon-114.png?v=74ae74e195">
+	<link rel="apple-touch-icon" sizes="144x144" href="../assets/images/icon-144.png?v=74ae74e195">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=74ae74e195">
+	<link rel="stylesheet" type="text/css" href="../assets/css/style-custom.css?v=74ae74e195">
+	<link rel="stylesheet" type="text/css" href="../assets/css/dbg-style-custom.css?v=74ae74e195">
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Merriweather:300,400,900,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+	<link rel="canonical" href="http://dbg.io/changing-your-preview-image-in-react-native-ios/">
+    <meta name="referrer" content="origin">
+    
+    <meta property="og:site_name" content="dbg.io">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Changing the iOS task switcher preview image in React Native">
+    <meta property="og:description" content="A simple solution to change the preview image in the iOS task switcher in React Native to hide any sensitive information.">
+    <meta property="og:url" content="http://dbg.io/changing-your-preview-image-in-react-native-ios/">
+    <meta property="article:published_time" content="2017-01-12T01:52:54.595Z">
+    <meta property="article:modified_time" content="2017-01-16T00:09:04.802Z">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Changing the iOS task switcher preview image in React Native">
+    <meta name="twitter:description" content="A simple solution to change the preview image in the iOS task switcher in React Native to hide any sensitive information.">
+    <meta name="twitter:url" content="http://dbg.io/changing-your-preview-image-in-react-native-ios/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "dbg.io",
+    "author": {
+        "@type": "Person",
+        "name": "Dan Guilak",
+        "image": "//www.gravatar.com/avatar/6693144189d6babb5115d3b64e1d920b?s=250&d=mm&r=x",
+        "url": "http://dbg.io/author/dan",
+        "sameAs": null,
+        "description": null
+    },
+    "headline": "Changing the iOS task switcher preview image in React Native",
+    "url": "http://dbg.io/changing-your-preview-image-in-react-native-ios/",
+    "datePublished": "2017-01-12T01:52:54.595Z",
+    "dateModified": "2017-01-16T00:09:04.802Z",
+    "description": "A simple solution to change the preview image in the iOS task switcher in React Native to hide any sensitive information."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7">
+    <link rel="alternate" type="application/rss+xml" title="dbg.io" href="http://dbg.io/rss/">
+</head>
+
+<body class="post-template">
+	<!--[if lt IE 10]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	
+
+
+<div class="container single">
+    <div class="fixed-logo animated fadeInDown">
+        <a href="http://dbg.io">
+            <img class="lgo" src="../assets/images/icon.png?v=74ae74e195">
+            <img class="arrow" src="../assets/images/arrow.png?v=74ae74e195">
+        </a>
+    </div><!-- /.fixed-logo -->
+
+    <div class="rwd-menu">
+        <a class="arrow" href="http://dbg.io">
+            <img src="../assets/images/arrow.png?v=74ae74e195">
+        </a>
+
+        <a class="lgo" href="http://dbg.io">
+            <img src="../assets/images/icon.png?v=74ae74e195">
+        </a>
+    </div><!-- /.rwd-menu -->
+
+    <div class="row animated bounceInUp">
+        <div class="col-lg-12 single-inner">
+            <h1>Changing the iOS task switcher preview image in React Native</h1>
+            <h3>Dan Guilak // Jan 11th, 2017</h3>
+            <hr class="title-hr">
+            <p><em>Want to skip straight to the code? I wrote this all up in a sample React Native app on <a href="https://github.com/dguilak/react-native-preview-screen-demo">GitHub</a></em></p>
+
+<p>We've been using <a href="https://facebook.github.io/react-native/">React Native</a> to write the iOS version of <a href="https://ughmoney.com/">ughMoney</a>, and aside from a few gotchas it's been a great experience.  We were already using React on our frontend, so it's been a mostly trivial exercise to translate from the latter to the former. The really fun stuff has been figuring out how to accomplish all the cool stuff that's specific to mobile development.</p>
+
+<p>Since our platform deals with personal financial data, we'd like to be able to obscure the preview view in the task switcher, like 1Password or Chase do in their apps.</p>
+
+<p><img src="../content/images/2017/01/out.gif#centered-image" alt="Demo of changing preview image in task switcher"></p>
+
+<p>As it turns out this ends up being a pretty easy exercise in React Native. Basically we'll be using <a href="https://facebook.github.io/react-native/docs/appstate.html">AppState</a> to determine when the app is active and inactive, and rendering different views depending on that.</p>
+
+<p>We'll start by including the correct modules and our initial view, as is shown in the <code>AppState</code> example:  </p>
+
+<pre><code class="language-javascript">import React, { Component } from 'react';  
+import { AppState, Text, View } from 'react-native';
+
+class App extends Component {  
+  render() {
+    return (
+      &lt;View&gt;
+        &lt;Text&gt;Sensitive Information&lt;/Text&gt;
+      &lt;/View&gt;
+    )
+  }
+}
+</code></pre>
+
+<p>Now we'll add an <code>AppState</code> listener in <code>componentDidMount</code> that will trigger a function and we'll remove that listener on <code>componentWillUnmount</code>:</p>
+
+<pre><code>componentDidMount() {  
+  AppState.addEventListener('change', this._handleAppStateChange.bind(this));
+}
+
+componentWillUnmount() {  
+  AppState.removeEventListener('change', this._handleAppStateChange.bind(this));
+}
+
+render() {  
+  ...
+}
+</code></pre>
+
+<p>And we'll make sure to add the actual <code>this._handleAppStateChange</code> private function:</p>
+
+<pre><code>_handleAppStateChange(currentAppState) {  
+  this.setState({ currentAppState, });
+}
+</code></pre>
+
+<p>Now we'll modify the <code>render</code> method in our component to show a different view when the <code>currentAppState</code> is something other than <code>active</code>—i.e., <code>inactive</code> or <code>background</code>:</p>
+
+<pre><code>render() {  
+  if (this.state.currentAppState !== 'active') {
+    return (
+      &lt;View&gt;
+        &lt;Text&gt;Unimportant Noninformation&lt;/Text&gt;
+      &lt;/View&gt;
+    )
+  }
+   return (
+    &lt;View&gt;
+      &lt;Text&gt;Sensitive Information&lt;/Text&gt;
+    &lt;/View&gt;
+  )
+}
+</code></pre>
+
+<p>And of course it'd probably be better form just to write the 'inactive' view as a separate component.</p>
+
+<p><strong>Bonus:</strong> if you've set up <a href="https://stackoverflow.com/questions/34027270/ios-launch-screen-in-react-native">a launch image for your app</a>, you can render that image as your preview screen by using the <a href="https://facebook.github.io/react-native/docs/image.html">Image</a> component:</p>
+
+<pre><code>import React, { Component } from 'react';  
+import { Image } from 'react-native';
+
+var SCREEN_WIDTH = require('Dimensions').get('window').width;  
+var SCREEN_HEIGHT = require('Dimensions').get('window').height;
+
+export default class Inactive extends Component {  
+  render() {
+    // Just going to use the same image we do for LaunchImage
+    return (
+      &lt;Image source={{uri: 'LaunchImage'}} style={{width: SCREEN_WIDTH, height: SCREEN_HEIGHT}} /&gt;
+    )
+  }
+}
+</code></pre>
+
+<p>Which will work perfectly for any screen size as long as they're all accounted for in your <code>LaunchImages.launchimage</code> in <code>Images.xcassets</code>.</p>
+
+<p>The full source for this example is available on <a href="https://github.com/dguilak/react-native-preview-screen-demo">GitHub</a>.</p>
+            <hr class="title-hr">
+            <div class="custom-post-footer">
+                <a href="http://twitter.com/dguilak" target="_blank" class="button twitter">Twitter</a>
+            </div>
+            <!--
+            <div class="comments">
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'forum-shortname'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div><!-- /.comments -->
+    </div><!-- /.row -->
+</div><!-- /.container -->
+
+
+
+	<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45019035-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+	<script type="text/javascript" src="../assets/js/jquery.fitvids.js?v=74ae74e195"></script>
+	<script type="text/javascript" src="../assets/js/index.js?v=74ae74e195"></script>
+	<script type="text/javascript" src="../assets/js/typed.js?v=74ae74e195"></script>
+
+</div></body>

@@ -1,11 +1,16 @@
-.full-img {
+img[src$='#centered-image'] {
+  display: block;
+  margin: 0 auto;
   max-width: 100%;
 }
 
-@media (max-width: 768px) {
-    a.button.dark {
-        margin-top: 5px;
-        display: inline-block;
-        line-height: 1.5em;
-    }
+a.button.dark {
+    margin-top: 5px;
+    display: inline-block;
+    line-height: 1.5em;
+}
+
+.custom-post-footer {
+    display: inline-block;
+    margin-bottom: 50px;
 }
