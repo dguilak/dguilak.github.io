@@ -1,48 +1,49 @@
-
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 	<title>Quick and dirty usability testing setup for mobile applications</title>
-	<meta name="description" content="Usability testing can have a huge impact on your product in as little as 30 minutes. Here's an easy setup so you can focus on doing, not preparation.">
+	<meta name="description" content="Usability testing can have a huge impact on your product in as little as 30 minutes. Here&#x27;s an easy setup so you can focus on doing, not preparation." />
 
-	<meta name="HandheldFriendly" content="True">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<link rel="shortcut icon" href="../assets/images/favicon.ico?v=79ae66ebb2">
-	<link rel="apple-touch-icon" sizes="57x57" href="../assets/images/icon-57.png?v=79ae66ebb2">
-	<link rel="apple-touch-icon" sizes="72x72" href="../assets/images/icon-72.png?v=79ae66ebb2">
-	<link rel="apple-touch-icon" sizes="114x114" href="../assets/images/icon-114.png?v=79ae66ebb2">
-	<link rel="apple-touch-icon" sizes="144x144" href="../assets/images/icon-144.png?v=79ae66ebb2">
+	<link rel="shortcut icon" href="../assets/images/favicon.ico?v=08ea7dfc7c">
+	<link rel="apple-touch-icon" sizes="57x57" href="../assets/images/icon-57.png?v=08ea7dfc7c" />
+	<link rel="apple-touch-icon" sizes="72x72" href="../assets/images/icon-72.png?v=08ea7dfc7c" />
+	<link rel="apple-touch-icon" sizes="114x114" href="../assets/images/icon-114.png?v=08ea7dfc7c" />
+	<link rel="apple-touch-icon" sizes="144x144" href="../assets/images/icon-144.png?v=08ea7dfc7c" />
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=79ae66ebb2">
-	<link rel="stylesheet" type="text/css" href="../assets/css/style-custom.css?v=79ae66ebb2">
-	<link rel="stylesheet" type="text/css" href="../assets/css/dbg-style-custom.css?v=79ae66ebb2">
+	<link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=08ea7dfc7c" />
+	<link rel="stylesheet" type="text/css" href="../assets/css/style-custom.css?v=08ea7dfc7c" />
+	<link rel="stylesheet" type="text/css" href="../assets/css/dbg-style-custom.css?v=08ea7dfc7c" />
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
-	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Merriweather:300,400,900,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
-	<link rel="canonical" href="http://dbg.io/quick-and-dirty-usability-testing/">
-    <meta name="referrer" content="origin">
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Merriweather:300,400,900,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type='text/css'">
+	<link rel="canonical" href="http://dbg.io/quick-and-dirty-usability-testing/" />
+    <meta name="referrer" content="origin" />
     
-    <meta property="og:site_name" content="dbg.io">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Quick and dirty usability testing setup for mobile applications">
-    <meta property="og:description" content="Usability testing can have a huge impact on your product in as little as 30 minutes. Here's an easy setup so you can focus on doing, not preparation.">
-    <meta property="og:url" content="http://dbg.io/quick-and-dirty-usability-testing/">
-    <meta property="og:image" content="http://dbg.io/content/images/2017/03/user-testing-setup.jpg">
-    <meta property="article:published_time" content="2017-03-30T17:09:24.779Z">
-    <meta property="article:modified_time" content="2017-03-30T19:50:07.028Z">
-    <meta property="article:tag" content="usability-testing">
-    <meta property="article:tag" content="how-to">
-    <meta property="article:tag" content="mobile">
+    <meta property="og:site_name" content="dbg.io" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Quick and dirty usability testing setup for mobile applications" />
+    <meta property="og:description" content="Usability testing can have a huge impact on your product in as little as 30 minutes. Here&#x27;s an easy setup so you can focus on doing, not preparation." />
+    <meta property="og:url" content="http://dbg.io/quick-and-dirty-usability-testing/" />
+    <meta property="og:image" content="http://dbg.io/content/images/2017/03/user-testing-setup.jpg" />
+    <meta property="article:published_time" content="2017-03-30T17:09:24.779Z" />
+    <meta property="article:modified_time" content="2017-03-30T19:50:07.028Z" />
+    <meta property="article:tag" content="usability-testing" />
+    <meta property="article:tag" content="how-to" />
+    <meta property="article:tag" content="mobile" />
     
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Quick and dirty usability testing setup for mobile applications">
-    <meta name="twitter:description" content="Usability testing can have a huge impact on your product in as little as 30 minutes. Here's an easy setup so you can focus on doing, not preparation.">
-    <meta name="twitter:url" content="http://dbg.io/quick-and-dirty-usability-testing/">
-    <meta name="twitter:image:src" content="http://dbg.io/content/images/2017/03/user-testing-setup.jpg">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Quick and dirty usability testing setup for mobile applications" />
+    <meta name="twitter:description" content="Usability testing can have a huge impact on your product in as little as 30 minutes. Here&#x27;s an easy setup so you can focus on doing, not preparation." />
+    <meta name="twitter:url" content="http://dbg.io/quick-and-dirty-usability-testing/" />
+    <meta name="twitter:image:src" content="http://dbg.io/content/images/2017/03/user-testing-setup.jpg" />
     
     <script type="application/ld+json">
 {
@@ -67,8 +68,8 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 0.7">
-    <link rel="alternate" type="application/rss+xml" title="dbg.io" href="http://dbg.io/rss/">
+    <meta name="generator" content="Ghost 0.7" />
+    <link rel="alternate" type="application/rss+xml" title="dbg.io" href="http://dbg.io/rss/" />
 </head>
 
 <body class="post-template tag-usability-testing tag-how-to tag-mobile">
@@ -82,18 +83,18 @@
 <div class="container single">
     <div class="fixed-logo animated fadeInDown">
         <a href="http://dbg.io">
-            <img class="lgo" src="../assets/images/icon.png?v=79ae66ebb2">
-            <img class="arrow" src="../assets/images/arrow.png?v=79ae66ebb2">
+            <img class="lgo" src="../assets/images/icon.png?v=08ea7dfc7c">
+            <img class="arrow" src="../assets/images/arrow.png?v=08ea7dfc7c">
         </a>
     </div><!-- /.fixed-logo -->
 
     <div class="rwd-menu">
         <a class="arrow" href="http://dbg.io">
-            <img src="../assets/images/arrow.png?v=79ae66ebb2">
+            <img src="../assets/images/arrow.png?v=08ea7dfc7c">
         </a>
 
         <a class="lgo" href="http://dbg.io">
-            <img src="../assets/images/icon.png?v=79ae66ebb2">
+            <img src="../assets/images/icon.png?v=08ea7dfc7c">
         </a>
     </div><!-- /.rwd-menu -->
 
@@ -102,7 +103,7 @@
             <h1>Quick and dirty usability testing setup for mobile applications</h1>
             <h3>Dan Guilak // Mar 30th, 2017</h3>
             <hr class="title-hr">
-            <p><img src="../content/images/2017/03/user-testing-setup-1.jpg#centered-image" alt="My homebrew usability testing setup, complete with microphone and tripod."></p>
+            <p><img src="../content/images/2017/03/user-testing-setup-1.jpg#centered-image" alt="My homebrew usability testing setup, complete with microphone and tripod." /></p>
 
 <p>I don't <em>need</em> to sing the praises of usability testing, many before me have done that—<a href="https://www.usability.gov/how-to-and-tools/methods/usability-testing.html">even the government</a>—but bear with me. When you're staring at the product you're developing all day every day, you become numb to the small (and big) idiosyncrasies that are likely having drastic effects on how people interact with it. Half an hour with a fresh pair of eyes can yield huge returns in product priorities.</p>
 
@@ -177,8 +178,9 @@ ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->
 
-	<script type="text/javascript" src="../assets/js/jquery.fitvids.js?v=79ae66ebb2"></script>
-	<script type="text/javascript" src="../assets/js/index.js?v=79ae66ebb2"></script>
-	<script type="text/javascript" src="../assets/js/typed.js?v=79ae66ebb2"></script>
+	<script type="text/javascript" src="../assets/js/jquery.fitvids.js?v=08ea7dfc7c"></script>
+	<script type="text/javascript" src="../assets/js/index.js?v=08ea7dfc7c"></script>
+	<script type="text/javascript" src="../assets/js/typed.js?v=08ea7dfc7c"></script>
 
-</div></body>
+</body>
+</html>
