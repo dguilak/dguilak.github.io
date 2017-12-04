@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<title>Local GitHub-like source control on Mac with Gogs, Docker, and Dropbox</title>
+	<meta name="description" content="" />
+
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="shortcut icon" href="../assets/images/favicon.ico?v=d75788864f">
+	<link rel="apple-touch-icon" sizes="57x57" href="../assets/images/icon-57.png?v=d75788864f" />
+	<link rel="apple-touch-icon" sizes="72x72" href="../assets/images/icon-72.png?v=d75788864f" />
+	<link rel="apple-touch-icon" sizes="114x114" href="../assets/images/icon-114.png?v=d75788864f" />
+	<link rel="apple-touch-icon" sizes="144x144" href="../assets/images/icon-144.png?v=d75788864f" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=d75788864f" />
+	<link rel="stylesheet" type="text/css" href="../assets/css/style-custom.css?v=d75788864f" />
+	<link rel="stylesheet" type="text/css" href="../assets/css/dbg-style-custom.css?v=d75788864f" />
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Merriweather:300,400,900,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type='text/css'">
+	<link rel="canonical" href="http://dbg.io/local-github-like-source-control-with-gogs-and-docker/" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="dbg.io" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Local GitHub-like source control on Mac with Gogs, Docker, and Dropbox" />
+    <meta property="og:description" content="It&#x27;s easy to get used to the source control UI that comes with web applications like GitHub, GitLab, Bitbucket, etc. But what if you&#x27;re not using it for collaboration but you&#x27;d still like a private free repository, or would like..." />
+    <meta property="og:url" content="http://dbg.io/local-github-like-source-control-with-gogs-and-docker/" />
+    <meta property="article:published_time" content="2017-12-04T21:54:06.699Z" />
+    <meta property="article:modified_time" content="2017-12-04T21:55:57.448Z" />
+    <meta property="article:tag" content="docker" />
+    <meta property="article:tag" content="gogs" />
+    <meta property="article:tag" content="github" />
+    <meta property="article:tag" content="gitlab" />
+    <meta property="article:tag" content="source control" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Local GitHub-like source control on Mac with Gogs, Docker, and Dropbox" />
+    <meta name="twitter:description" content="It&#x27;s easy to get used to the source control UI that comes with web applications like GitHub, GitLab, Bitbucket, etc. But what if you&#x27;re not using it for collaboration but you&#x27;d still like a private free repository, or would like..." />
+    <meta name="twitter:url" content="http://dbg.io/local-github-like-source-control-with-gogs-and-docker/" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "dbg.io",
+    "author": {
+        "@type": "Person",
+        "name": "Dan Guilak",
+        "image": "//www.gravatar.com/avatar/6693144189d6babb5115d3b64e1d920b?s=250&d=mm&r=x",
+        "url": "http://dbg.io/author/dan",
+        "sameAs": null,
+        "description": null
+    },
+    "headline": "Local GitHub-like source control on Mac with Gogs, Docker, and Dropbox",
+    "url": "http://dbg.io/local-github-like-source-control-with-gogs-and-docker/",
+    "datePublished": "2017-12-04T21:54:06.699Z",
+    "dateModified": "2017-12-04T21:55:57.448Z",
+    "keywords": "docker, gogs, github, gitlab, source control",
+    "description": "It&#x27;s easy to get used to the source control UI that comes with web applications like GitHub, GitLab, Bitbucket, etc. But what if you&#x27;re not using it for collaboration but you&#x27;d still like a private free repository, or would like..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7" />
+    <link rel="alternate" type="application/rss+xml" title="dbg.io" href="http://dbg.io/rss/" />
+</head>
+
+<body class="post-template tag-docker tag-gogs tag-github tag-gitlab tag-source-control">
+	<!--[if lt IE 10]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	
+
+
+<div class="container single">
+    <div class="fixed-logo animated fadeInDown">
+        <a href="http://dbg.io">
+            <img class="lgo" src="../assets/images/icon.png?v=d75788864f">
+            <img class="arrow" src="../assets/images/arrow.png?v=d75788864f">
+        </a>
+    </div><!-- /.fixed-logo -->
+
+    <div class="rwd-menu">
+        <a class="arrow" href="http://dbg.io">
+            <img src="../assets/images/arrow.png?v=d75788864f">
+        </a>
+
+        <a class="lgo" href="http://dbg.io">
+            <img src="../assets/images/icon.png?v=d75788864f">
+        </a>
+    </div><!-- /.rwd-menu -->
+
+    <div class="row animated bounceInUp">
+        <div class="col-lg-12 single-inner">
+            <h1>Local GitHub-like source control on Mac with Gogs, Docker, and Dropbox</h1>
+            <h3>Dan Guilak // Dec 4th, 2017</h3>
+            <hr class="title-hr">
+            <p>It's easy to get used to the source control UI that comes with web applications like GitHub, GitLab, Bitbucket, etc. But what if you're not using it for collaboration but you'd still like a private free repository, or would like to use it without an internet connection?</p>
+
+<p>Enter <a href="https://gogs.io">Gogs</a>—an <em>incredibly</em> lightweight git service, that's super easy to run locally via Docker for Mac.</p>
+
+<h2 id="installdockerformac">Install Docker for Mac</h2>
+
+<p>It's real <a href="https://www.docker.com/docker-mac">painless to install</a>, and it lives in a cute little icon on your taskbar.</p>
+
+<h2 id="createafolderinyourdropboxwhereyouwanttostoreyourgogsdata">Create a folder in your Dropbox where you want to store your Gogs data</h2>
+
+<pre><code>$ mkdir ~/Dropbox/gogs
+</code></pre>
+
+<p>All the configuration information and the SQLite3 database will be stored here.</p>
+
+<h2 id="pullthegogsdockerimage">Pull the Gogs docker image</h2>
+
+<p>You can follow along with the instructions in the <a href="https://github.com/gogits/gogs/tree/master/docker">official repository</a>, but there are a few key differences when you're running on Docker for Mac.</p>
+
+<pre><code># Pull image from Docker Hub.
+$ docker pull gogs/gogs
+
+# Use `docker run` for the first time.
+# Link the data file in the container to the Dropbox folder
+$ docker run --name=local-gogs -p 10022:22 -p 10080:3000 -v ~/Dropbox/gogs:/data gogs/gogs
+</code></pre>
+
+<p>You'll see some output similar to this: <br />
+<img src="../content/images/2017/10/Screenshot-2017-10-15-15-20-26.png#centered-image" alt="docker run terminal output" /></p>
+
+<p>And then go ahead and open up <code>localhost:10080</code> in your browser, and you'll see the setup page for Gogs.</p>
+
+<h2 id="setup">Setup</h2>
+
+<p><img src="../content/images/2017/10/Screenshot-2017-10-15-15-22-16.png#centered-image" alt="Gogs installation screen" /></p>
+
+<p>I chose the SQLite3 database so I don't have to run a database server in the container—I want to keep the setup as simple and lightweight as possible.</p>
+
+<p>Leave the domain as <code>localhost</code>, change the SSH port to <code>10022</code>, leave HTTP Port as <code>3000</code>, and make sure to change Application URL to <code>http://localhost:10080</code>.</p>
+
+<p>Leave everything else as default, despite what the documentation on the Gogs docker repository says, the instructions are not suited for Docker for Mac<sup id="fnref:1"><a href="index.html#fn:1" rel="footnote">1</a></sup>.</p>
+
+<p>Then go ahead and hit the Big Blue Button™.</p>
+
+<h2 id="createauser">Create a user</h2>
+
+<p>You'll be greeted with a login screen where you can create a new account (the first user will by default be the administrator).</p>
+
+<p>Before you do anything else, make sure to head to your settings and add an SSH key so you're able to create &amp; push repositories.</p>
+
+<h2 id="yourein">You're in!</h2>
+
+<p><img src="../content/images/2017/10/Screenshot-2017-10-15-15-39-02.png#centered-image" alt="Gogs dashboard" /></p>
+
+<p>You'll see your dashboard, where things operate pretty similarly to what you'd see on GitHub. When creating a repository you'll see instructions copy and paste to add your remote—the path should be correct as long as you followed the above instructions to change the SSH port to <code>10022</code>:</p>
+
+<pre><code>git remote add origin ssh://git@localhost:10022/dan/test-repo.git  
+</code></pre>
+
+<p>And now you can use it similarly to how you would use GitHub or GitLab.</p>
+
+<h2 id="startingandstopping">Starting and stopping</h2>
+
+<p><img src="../content/images/2017/10/Screenshot-2017-10-15-15-44-33.png#centered-image" alt="Hyperkit memory usage" /></p>
+
+<p>This solution hardly takes any memory at all <br />
+(less than a couple of Chrome tabs for me), so I generally keep the container running all the time.</p>
+
+<p>If you're not going to be using it, you can stop the docker process by running  </p>
+
+<pre><code>docker stop local-gogs  # or whatever you named the process  
+</code></pre>
+
+<p>and starting it up again when you're ready with  </p>
+
+<pre><code>docker start local-gogs  
+</code></pre>
+
+<p>You can also run it through <a href="https://kitematic.com/">Kitematic</a>, a slick docker UI available in the Docker for Mac toolbar icon—you can easily hit start, stop, and even delete the image if you want (just remember to remove the Dropbox folder too, if you want to do a full clean).</p>
+
+<p><img src="../content/images/2017/10/Screenshot-2017-10-15-15-47-08.png#centered-image" alt="Kitematic screenshot" /></p>
+
+<p>Happy coding!</p>
+
+<div class="footnotes"><ol><li class="footnote" id="fn:1"><p>According to this <a href="https://stackoverflow.com/questions/41267305/docker-for-mac-vm-ip">StackOverflow post</a>, All the port mappings on Docker for Mac are set to localhost, whereas the instructions on the Gogs docker repository say to use the 'Docker container IP'.  <a href="index.html#fnref:1" title="return to article">↩</a></p></li></ol></div>
+            <hr class="title-hr">
+            <div class="custom-post-footer">
+                Questions, comments, concerns? Feel free to reach out on <a href="http://twitter.com/dguilak" target="_blank" class="button twitter">Twitter</a>
+            </div>
+            <!--
+            <div class="comments">
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'forum-shortname'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div><!-- /.comments -->
+    </div><!-- /.row -->
+</div><!-- /.container -->
+
+
+
+	<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45019035-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+	<script type="text/javascript" src="../assets/js/jquery.fitvids.js?v=d75788864f"></script>
+	<script type="text/javascript" src="../assets/js/index.js?v=d75788864f"></script>
+	<script type="text/javascript" src="../assets/js/typed.js?v=d75788864f"></script>
+
+</body>
+</html>
